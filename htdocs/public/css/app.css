@@ -1,0 +1,65 @@
+.vertical-center {
+  min-height: 80%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 80vh; /* These two lines are counted as one :-)       */
+  display: flex;
+  align-items: center;
+}
+.jumbotron.topimage{
+    background:url(../img/fufu.jpg)center no-repeat;
+    background-size: cover;
+    height: 300px;
+}
+.jumbotron.yomerter{
+    background:url(../img/yomerter.jpg)center no-repeat;
+    background-size: cover;
+    height: 50vh;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+html,body {
+    height: 95%;
+}
+body{
+    background-color: #ecf0f1;
+}
+.container.fill{
+    min-height: 100%;
+    height: 100%;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.pin{
+    position: relative;
+}
+
+.scroll-anchor:hover .animate-text .text-wrap {
+    display: inline-block;
+    -webkit-animation: text-anim 1s ease 100ms;
+    -moz-animation: text-anim 1s ease 100ms;
+    -o-animation: text-anim 1s ease 100ms;
+    animation: text-anim 1s ease 100ms;
+}
+@-webkit-keyframes text-anim{ 0%{ -webkit-transform: rotate(0deg);} 30%{ -webkit-transform: rotate(30deg);} 70%{-webkit-transform: rotate(-30deg);} 100%{ -webkit-transform: rotate(0deg);}}
+@-moz-keyframes text-anim{ 0%{ -moz-transform: rotate(0deg);} 30%{ -moz-transform: rotate(30deg);} 70%{-moz-transform: rotate(-30deg);} 100%{ -moz-transform: rotate(0deg);}}
+@-o-keyframes text-anim{ 0%{ -o-transform: rotate(0deg);} 30%{ -o-transform: rotate(30deg);} 70%{-o-transform: rotate(-30deg);} 100%{ -o-transform: rotate(0deg);}}
+@keyframes text-anim{ 0%{-webkit-transform: rotate(0deg);-moz-transform: rotate(0deg);-ms-transform: rotate(0deg);transform: rotate(0deg);} 30%{-webkit-transform: rotate(30deg);-moz-transform: rotate(30deg);-ms-transform: rotate(30deg);transform: rotate(30deg);} 70%{-webkit-transform: rotate(-30deg);-moz-transform: rotate(-30deg);-ms-transform: rotate(-30deg);transform: rotate(-30deg);} 100%{-webkit-transform: rotate(0deg);-moz-transform: rotate(0deg);-ms-transform: rotate(0deg);transform: rotate(0deg);};
+}
+/*** scroll menu css ***/
+.scroll-menu-content .menu-wrap {
+  display: table;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.scroll-menu-content .menu {
+  display: table-cell;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  font-size: 18px;
+  line-height: 22px;
+}
