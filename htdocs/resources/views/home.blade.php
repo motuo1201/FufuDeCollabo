@@ -18,5 +18,13 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <form action="{{route('yomerter')}}" method="GET" class="form">
+            {{ csrf_field() }}
+            <div class="col-md-12">
+                <input type="submit" value="ヨメータ―オンライン" class="btn btn-warning btn-block btn-menu-item">            
+            </div>
+        </form>
+    </div>
 </div>
 @endsection
