@@ -22,10 +22,10 @@
                         <button class="btn btn-lg btn-default"><a href="{{ route('register') }}"><h4>さぁ、初めてみましょう</h4></a></button>             
                     </div>
                     <div class="row" style="text-align: center">
-                        <div class="col-xs-1">
+                        <div class="col-xs-1 col-sm-1 col-md-1">
                             <h4 class="text-warning">妻</h4>                
                         </div>
-                        <div class="col-xs-11 col-sm-5">
+                        <div class="col-xs-11 col-sm-4 col-md-4">
                             <div class="bs-component">
                                 <div class="alert alert-warning">
                                     <p>そんなつもりじゃなかったのに…</p>
@@ -34,7 +34,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xs-11 col-sm-5">
+                        <div class="col-xs-11 col-sm-4 col-md-4">
                             <div class="bs-component">
                                 <div class="alert alert-info">
                                     <p>妻の気持ちが分からない…</p>
@@ -42,9 +42,9 @@
                                     <p>もうちょっと言い方を…</p>                                                    
                                 </div>
                             </div>
-                        </div> 
-                        <div class="col-xs-1" style="text-align: left">
-                            <h4 class="text-primary">夫</h4>                
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1">
+                            <h4 class="text-primary">夫</h4>      
                         </div>
                     </div>
 
