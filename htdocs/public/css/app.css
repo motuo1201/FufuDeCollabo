@@ -9,13 +9,28 @@
     background-size: cover;
     height: 300px;
 }
-.jumbotron.yomerter{
-    background:url(../img/yomerter.jpg)center no-repeat;
-    background-size: cover;
-    height: 50vh;
-    padding-top: 0;
-    padding-bottom: 0;
+.yomerter{
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
+.pin {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top:50%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    margin:0;
+    padding:0;
+}
+.yomerter{
+    width: 100%;
+    height:100%;
+}
+
 html,body {
     height: 95%;
 }
@@ -32,10 +47,6 @@ body{
 
 .text-center{
     text-align: center;
-}
-
-.pin{
-    position: relative;
 }
 
 .scroll-anchor:hover .animate-text .text-wrap {
