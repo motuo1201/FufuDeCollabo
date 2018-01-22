@@ -19,5 +19,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/yomerter', function (){
-    return view('yomerter\yomerter-slide');
+    return view('yomerter.yomerter-slide');
 })->name('yomerter');
