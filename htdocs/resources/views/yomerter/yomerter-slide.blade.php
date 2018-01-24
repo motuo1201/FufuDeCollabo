@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container" style="padding-top: 120px">
+<div class="container">
     <h6>今の気分は？</h6>
     <div class="yomerter" id="yomerter">
         <img src="./img/yometer_face.png" alt="ヨメータ―" class="yomerter">

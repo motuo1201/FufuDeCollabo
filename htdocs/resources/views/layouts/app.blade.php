@@ -23,7 +23,7 @@
             <a class="navbar-brand" href="{{route('welcome')}}">トップページ</a>
         </div>
         @else
-        <nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar navbar-default">
             <div class="bs-component">
                 <nav class="navbar navbar-dark bg-danger">
                     <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarResponsive2" 
