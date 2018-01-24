@@ -33,6 +33,10 @@ body{
     -o-animation: text-anim 1s ease 100ms;
     animation: text-anim 1s ease 100ms;
 }
+@media screen and (max-width: 768px) {
+    section{height: 100vh} 
+}
+
 @-webkit-keyframes text-anim{ 0%{ -webkit-transform: rotate(0deg);} 30%{ -webkit-transform: rotate(30deg);} 70%{-webkit-transform: rotate(-30deg);} 100%{ -webkit-transform: rotate(0deg);}}
 @-moz-keyframes text-anim{ 0%{ -moz-transform: rotate(0deg);} 30%{ -moz-transform: rotate(30deg);} 70%{-moz-transform: rotate(-30deg);} 100%{ -moz-transform: rotate(0deg);}}
 @-o-keyframes text-anim{ 0%{ -o-transform: rotate(0deg);} 30%{ -o-transform: rotate(30deg);} 70%{-o-transform: rotate(-30deg);} 100%{ -o-transform: rotate(0deg);}}

@@ -10,16 +10,17 @@
     </head>
     <body>
         <div id="wrapper">
-                <div class="jumbotron topimage"></div>
-                <div class="container">
-                    <section class="section" id="section1">
-                    
+            <div class="jumbotron topimage"></div>
+            <div class="container">
+                <section class="section" id="section1">
                     <div class="row" style="text-align: center">
                         <h5 class="text-mute">伝わらないその想い…</h5>
                         <h5>夫婦でちゃんとシェアしませんか？</h5>
                     </div>
                     <div class="row" style="text-align: center;padding-bottom: 15px">
-                        <button class="btn btn-lg btn-default"><a href="{{ route('register') }}"><h4>さぁ、始めてみましょう</h4></a></button>             
+                        <button class="btn btn-lg btn-default">
+                            <a href="{{ route('register') }}"><h4>さぁ、始めてみましょう</h4></a>
+                        </button>             
                     </div>
                     <div class="row" style="text-align: center">
                         <div class="col-xs-1 col-sm-1 col-md-1">
@@ -85,7 +86,7 @@
                         </div>
                     </div>
                 </section>
-                <section id="section3">
+                <section class="section" id="section3">
                     <div class="row" style="padding-top: 40px">
                         <div class="panel">
                             <div class="panel-heading text-center">
@@ -105,7 +106,7 @@
                         </div>
                     </div>
                 </section>
-                <section id="section4">
+                <section class="section" id="section4" style="height: 100vh">
                     <div class="row" style="padding-top: 40px">
                     <div class="panel">
                         <div class="panel-heading text-center">
@@ -124,12 +125,12 @@
                         <img class="img-responsive" src="img/chat.jpg" alt="本音">
                     </div>
                 </div>
-                </section>        
-
                 <div class="row" style="text-align: center">
                     <h4>↓↓登録はこちらから↓↓</h4>
                     <button class="btn btn-block btn-primary"><a href="{{ route('register') }}"><h4>使ってみる！</h4></a></button>
                 </div>
+
+                </section>        
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
