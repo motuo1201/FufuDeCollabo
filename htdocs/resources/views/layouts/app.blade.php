@@ -19,9 +19,7 @@
 <body>
     <div id="app">
         @guest
-        <div class="container">            
-            <a class="navbar-brand" href="{{route('welcome')}}">トップページ</a>
-        </div>
+        {{-- user情報が無いので、トップページには特に何も表示しない。 --}}
         @else
         <nav class="navbar navbar-default">
             <div class="bs-component">
