@@ -47,10 +47,17 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        //TODO:バリデーションが不十分
+        //パートナーのemailユニークチェック
+        //登録者とパートナーが同じemailアドレスだった場合のvalidation
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'partners-name' => 'required|string|max:255',
+            'partners-email' => 'required|string|email|max:255',
+            'partners-password' => 'required|string|min:6|confirmed',
+
         ]);
     }
 
@@ -62,10 +69,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $fufuId = md5(uniqid());
+        User::create([
+            'name' => $data['partners-name'],
+            'email' => $data['partners-email'],
+            'password' => bcrypt($data['partners-password']),
+            'fufuId' => $fufuId,
+            'position' => $data['position'],
+        ]);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'fufuId' => $fufuId,
+            'position' => ($data['position'])==="妻"?"夫":"妻"
         ]);
     }
 }
