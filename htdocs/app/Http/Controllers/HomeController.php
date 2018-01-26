@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repositories\IUserRepository;
 
 class HomeController extends Controller
 {
@@ -21,8 +22,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(IUserRepository $user)
     {
-        return view('home');
+        $partner = $user->getPartner();
+        return view('home',compact('partner'));
     }
 }
