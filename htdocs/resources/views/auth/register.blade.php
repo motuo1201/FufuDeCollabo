@@ -66,8 +66,8 @@
                     </select>                    
                 </div>
             </div>
-            <div class="col-xs-12 text-center" style="position: absolute;bottom: 0;">
-                <a href="#partner"><img src="./img/arrowDown.png" alt="次へ" style="transform: translateX(-10%)"></a>
+            <div class="col-xs-12 text-center">
+                <a href="#partner"><img src="./img/arrowDown.png" alt="次へ" class="bound"></a>
             </div>
         </div>
         <div class="col-xs-12 col-md-6 bg-primary" style="color:white;height:100vh" id="partner">

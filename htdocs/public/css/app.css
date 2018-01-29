@@ -92,3 +92,29 @@ body{
     20% { transform: scale(1, 1) translate(-50%,-90%); }
     100% { transform: scale(1, 1) translate(-50%,-90%); }
 }
+/*会員登録情報画面のstyle*/
+.bound{
+    -webkit-animation: bound .8s linear infinite;
+}
+@-webkit-keyframes bound {
+  0% {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+  30% {
+    -webkit-transform: translateY(25px);
+    transform: translateY(25px);
+  }
+  50% {
+    -webkit-transform: translateY(40px);
+    transform: translateY(40px);
+  }
+  80% {
+    -webkit-transform: translateY(25px);
+    transform: translateY(25px);
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+}
