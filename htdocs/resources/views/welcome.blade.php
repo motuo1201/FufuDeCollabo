@@ -68,7 +68,7 @@
                             </div>
                             <div class="panel-body">
                                 <h6 class="text-center">
-                                    <p>壁に貼っていたヨメータ―がオンラインで登場。<br>
+                                    <p>壁に貼っていたヨメーターがオンラインで登場。<br>
                                         お互いが離れていても、PCやモバイル上で<br>
                                         チェックできます！</p>
                                     <p>妻も夫も今の気持ちをポチっと！更新したら<br>
@@ -150,7 +150,7 @@
                 },         
                 {
                     backgroundColor: "#36d278",
-                    label: "ヨメータ―オンライン",
+                    label: "ヨメーターオンライン",
                     className : 'animate-text',
                     template: '<div class="menu-wrap"><div class="menu"><div class="text-wrap"><%= label %></div></div></div>'
                 },
