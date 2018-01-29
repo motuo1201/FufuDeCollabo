@@ -1,5 +1,5 @@
 <?php
-namespace App\Repositories;
+namespace App\Repositories\User;
 
 /**
  * ユーザーIDよりパートナーの情報を取得する。
