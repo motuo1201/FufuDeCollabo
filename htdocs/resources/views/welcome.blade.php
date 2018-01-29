@@ -64,7 +64,7 @@
                     <div class="row">
                         <div class="panel">
                             <div class="panel-heading text-center">
-                                <h4 class="text-danger">ヨメータ―オンライン</h4>
+                                <h4 class="text-danger">ヨメーターオンライン</h4>
                             </div>
                             <div class="panel-body">
                                 <h6 class="text-center">
