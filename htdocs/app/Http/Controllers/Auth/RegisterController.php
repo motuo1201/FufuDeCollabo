@@ -69,20 +69,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $fufuId = md5(uniqid());
+        $fufuId = md5(uniqid(rand(),1));
+        //パートナーの情報を登録する
         User::create([
             'name' => $data['partners-name'],
             'email' => $data['partners-email'],
             'password' => bcrypt($data['partners-password']),
             'fufuId' => $fufuId,
-            'position' => $data['position'],
+            'position' => ($data['position'])==="妻"?"夫":"妻",
         ]);
+        //メインユーザーの登録を行う。
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'fufuId' => $fufuId,
-            'position' => ($data['position'])==="妻"?"夫":"妻"
+            'position' => $data['position']
         ]);
     }
 }
