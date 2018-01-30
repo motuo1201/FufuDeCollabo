@@ -20,6 +20,9 @@
     <div id="app">
         @guest
         {{-- user情報が無いので、トップページには特に何も表示しない。 --}}
+        <div class="bg-warning" style="text-align: right">
+            既に登録済みの方は、<a href="{{route('login')}}">こちら</a>
+        </div>
         @else
         <nav class="navbar navbar-default">
             <div class="bs-component">
