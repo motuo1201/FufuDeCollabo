@@ -26,7 +26,11 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(
-        \App\Repositories\User\IUserRepository::class,
-        \App\Repositories\User::class);
+        \App\Repositories\User\IUser::class,
+        \App\Repositories\User\UserRepository::class);
+        
+        $this->app->singleton(
+        \App\Repositories\Yometer\IYomerter::class,
+        \App\Repositories\Yometer\YomerterRepository::class);
     }
 }

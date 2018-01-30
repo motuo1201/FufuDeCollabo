@@ -16,8 +16,8 @@ Route::get('/', function () {
 })->name('welcome');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/yomerter', function (){
-    return view('yomerter.yomerter-slide');
-})->name('yomerter');
+Route::group(['middleware' => ['auth']], function (){
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/yomerter', 'Yomerter\YomerterController@index')->name('yomerter');
+    Route::post('/yomerter', 'Yomerter\YomerterController@post')->name('yomerter');
+});

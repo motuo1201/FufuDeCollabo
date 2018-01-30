@@ -2,24 +2,35 @@
 
 @section('content')
 <div class="container">
+    <div class="alert alert-info">
+        <h6>パートナーの一言：{{$partnersCondition->comment or '特にありません'}}</h6>
+    </div>
     <h6>今の気分は？</h6>
     <div class="yomerter" id="yomerter">
         <img src="./img/yometer_face.png" alt="ヨメータ―" class="yomerter">
-        <img src="./img/pushpin.png" alt="ピン" class="pin animate-pin" id="pin">
+        <img src="./img/pushpin.png" alt="ピン" class="pin animate-pin" id="pin" 
+             style="top: {{$latestCondition->mentalCondition}}%;left: {{$latestCondition->physicalCondition}}%">
+        <img src="./img/pushpin_partner.png" alt="ピン" class="pin animate-pin" id="pin" 
+             style="top: {{$partnersCondition->mentalCondition}}%;left: {{$partnersCondition->physicalCondition}}%">
     </div>
-    <div class="row">
-        <div>
-            <p>今の気持ちを伝えましょう。(任意)</p>
-            <input type="text" name="partnersComment" placeholder="アイスが食べたいです！" class="form-input col-xs-12">
-        </div>        
-    </div>
-    <div class="row" style="padding-top: 20px">
-        <div class="col-md-12">
-            <input type="submit" class="btn btn-block btn-success" value="パートナーに思いを伝える！">
-            <input type="hidden" name="physicalCondition" value="" id="physicalCondition">
-            <input type="hidden" name="heartCondition"    value="" id="heartCondition">
-        </div>        
-    </div>
+    <form method="POST" action="{{route('yomerter')}}">
+        {{csrf_field()}}
+        <div class="row">
+            <div>
+                <p>今の気持ちを伝えましょう。(必須)</p>
+                <input type="text" name="comment" placeholder="アイスが食べたいです！" class="form-input col-xs-12"
+                       value="{{$latestCondition->comment}}">
+            </div>        
+        </div>
+        <div class="row" style="padding-top: 20px">
+            <div class="col-md-12">
+                <input type="submit" class="btn btn-block btn-success" value="パートナーに思いを伝える！">
+                <input type="hidden" name="physicalCondition" value="" id="physicalCondition">
+                <input type="hidden" name="mentalCondition"    value="" id="mentalCondition">
+            </div>        
+        </div>
+    </form>
+
 </div>
 @endsection
 
@@ -41,7 +52,7 @@
             $('#pin').css('top' ,top  + '%');
             $('#pin').css('left',left + '%');
             
-            $('#heartCondition').val(top);
+            $('#mentalCondition').val(top);
             $('#physicalCondition').val(left);
         });
     </script>
