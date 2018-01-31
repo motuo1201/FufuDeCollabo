@@ -37,7 +37,7 @@ class YomerterController extends Controller
         $this->validate($request, 
                 ['physicalCondition' => 'integer|between:0,100',
                  'mentalCondition'   => 'integer|between:0,100',
-                 'comment'           => 'required']);
+                 'comment'           => 'max:255']);
         $user = \Auth::user();
         $param = $request->only(['physicalCondition','mentalCondition','comment']);
         $param['user_id'] = $user->id;

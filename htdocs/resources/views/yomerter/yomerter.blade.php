@@ -16,7 +16,7 @@
         {{csrf_field()}}
         <div class="row">
             <div>
-                <p>今の気持ちを伝えましょう。(必須)</p>
+                <p>今の気持ちを伝えましょう。(任意)</p>
                 <input type="text" name="comment" placeholder="アイスが食べたいです！" class="form-input col-xs-12"
                        value="{{$latestCondition->comment}}">
             </div>        
