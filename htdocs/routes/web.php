@@ -16,6 +16,11 @@ Route::get('/', function () {
 })->name('welcome');
 
 Auth::routes();
+Route::group(['middleware' => ['guest']], function (){
+    Route::get('/choice-position', 'Auth\ChoicePositionController@index')->name('choice-position');
+    Route::post('/choice-position', 'Auth\ChoicePositionController@goNext')->name('choice-position');
+});
+
 Route::group(['middleware' => ['auth']], function (){
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/yomerter', 'Yomerter\YomerterController@index')->name('yomerter');

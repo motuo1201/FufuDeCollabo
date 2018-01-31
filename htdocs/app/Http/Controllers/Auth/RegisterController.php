@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 
 class RegisterController extends Controller
 {
@@ -38,6 +40,14 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
+    public function showRegistrationForm(Request $request)
+    {
+        //直接遷移は禁止。必ず夫か妻かを選んでもらう
+        if(old('position') === null and URL::previous()!==route('choice-position')){
+            return redirect(route('choice-position'));
+        }
+        return view('auth.register');
+    }
 
     /**
      * Get a validator for an incoming registration request.
@@ -51,13 +61,13 @@ class RegisterController extends Controller
         //パートナーのemailユニークチェック
         //登録者とパートナーが同じemailアドレスだった場合のvalidation
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-            'partners-name' => 'required|string|max:255',
-            'partners-email' => 'required|string|email|max:255',
+            'name'              => 'required|string|max:255',
+            'email'             => 'required|string|email|max:255|unique:users',
+            'password'          => 'required|string|min:6|confirmed',
+            'partners-name'     => 'required|string|max:255',
+            'partners-email'    => 'required|string|email|max:255',
             'partners-password' => 'required|string|min:6|confirmed',
-
+            'position'          => 'required|in:夫,妻'
         ]);
     }
 

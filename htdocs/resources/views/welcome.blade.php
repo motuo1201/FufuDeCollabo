@@ -19,7 +19,7 @@
                     </div>
                     <div class="row" style="text-align: center;padding-bottom: 15px">
                         <button class="btn btn-lg btn-default">
-                            <a href="{{ route('register') }}"><h4>さぁ、始めてみましょう</h4></a>
+                            <a href="{{ route('choice-position') }}"><h4>さぁ、始めてみましょう</h4></a>
                         </button>             
                     </div>
                     <div class="row" style="text-align: center">

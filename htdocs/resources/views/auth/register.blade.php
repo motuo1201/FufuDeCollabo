@@ -6,7 +6,7 @@
     {{ csrf_field() }}
     <div class="row">
         <div class="col-xs-12 col-md-6 bg-danger" style="color: white;height:100vh">
-            <h2>あなたの登録ページ</h2>
+            <h2>{{session('position')}}の登録ページ</h2>
             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                 <label for="name" class="col-md-4 control-label">お名前</label>
 
@@ -56,22 +56,13 @@
                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                 </div>
             </div>
-
-            <div class="form-group">
-                <label for="position" class="col-md-4 control-label">あなたはどっち？</label>
-                <div class="col-md-6">
-                    <select name="position" class="form-control ">
-                        <option>妻</option>
-                        <option>夫</option>
-                    </select>                    
-                </div>
-            </div>
+            <input type="hidden" value="{{session('position')}}" name="position">
             <div class="col-xs-12 text-center">
                 <a href="#partner"><img src="./img/arrowDown.png" alt="次へ" class="bound"></a>
             </div>
         </div>
         <div class="col-xs-12 col-md-6 bg-primary" style="color:white;height:100vh" id="partner">
-            <h2>パートナーの登録ページ</h2>
+            <h2>{{session('position')==='妻'?'夫':'妻'}}の登録ページ</h2>
             <div class="form-group{{ $errors->has('partners-name') ? ' has-error' : '' }}">
                 <label for="name" class="col-md-4 control-label">お名前</label>
 
