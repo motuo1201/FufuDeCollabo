@@ -2,16 +2,15 @@
 
 @section('content')
 <div class="container">
-    <div class="alert alert-info">
-        <h6>パートナーの一言：{{$partnersCondition->comment or '特にありません'}}</h6>
-    </div>
     <h6>今の気分は？</h6>
     <div class="yomerter" id="yomerter">
         <img src="./img/yometer_face.png" alt="ヨメータ―" class="yomerter">
         <img src="./img/pushpin.png" alt="ピン" class="pin animate-pin" id="pin" 
              style="top: {{$latestCondition->mentalCondition}}%;left: {{$latestCondition->physicalCondition}}%">
         <img src="./img/pushpin_partner.png" alt="ピン" class="pin animate-pin" id="pin" 
-             style="top: {{$partnersCondition->mentalCondition}}%;left: {{$partnersCondition->physicalCondition}}%">
+             style="top: {{$partnersCondition->mentalCondition}}%;left: {{$partnersCondition->physicalCondition}}%"
+             data-toggle="tooltip" data-placement="top" 
+             title="{{$partner->name}}:{{$partnersCondition->comment or '特にありません'}}">
     </div>
     <form method="POST" action="{{route('yomerter')}}">
         {{csrf_field()}}
@@ -24,7 +23,7 @@
         </div>
         <div class="row" style="padding-top: 20px">
             <div class="col-md-12">
-                <input type="submit" class="btn btn-block btn-success" value="パートナーに思いを伝える！">
+                <input type="submit" class="btn btn-block btn-success" value="{{$partner->name}}に思いを伝える！">
                 <input type="hidden" name="physicalCondition" value="" id="physicalCondition">
                 <input type="hidden" name="mentalCondition"    value="" id="mentalCondition">
             </div>        
@@ -36,6 +35,7 @@
 
 @section('script')
     <script>
+        $('.yomerter [data-toggle="tooltip"]').tooltip('show');
         $('#yomerter').click(function (e){
             //データに保持する為、ピンを置いた場所の相対位置を割合で取得する。
             var areaOffset = $('#yomerter').offset();

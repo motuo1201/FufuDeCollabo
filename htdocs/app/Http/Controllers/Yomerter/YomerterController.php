@@ -26,7 +26,7 @@ class YomerterController extends Controller
         $partner = $userRepository->getPartner();
         $partnersCondition = $this->yomerter->getLatestPartnersCondition($partner->id);
         
-        return view('yomerter.yomerter', compact('latestCondition','partnersCondition'));
+        return view('yomerter.yomerter', compact('latestCondition','partnersCondition','partner'));
     }
     /**
      * 現在のヨメーターの状態を登録する。
