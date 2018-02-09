@@ -17,7 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::group(['middleware' => ['guest']], function (){
-    Route::get('/choice-position', 'Auth\ChoicePositionController@index')->name('choice-position');
+    Route::get('/demo-yomerter'   , 'Yomerter\DemoYomerterController@index')->name('demo-yomerter');
+    Route::get('/choice-position' , 'Auth\ChoicePositionController@index')->name('choice-position');
     Route::post('/choice-position', 'Auth\ChoicePositionController@goNext')->name('choice-position');
 });
 

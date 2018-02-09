@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h6>今の気分は？</h6>
+    <h6>今の気分をタップしてパートナーに思いを伝えましょう！</h6>
     <div class="yomerter" id="yomerter">
         <img src="./img/yometer_face.png" alt="ヨメータ―" class="yomerter">
         <img src="./img/pushpin.png" alt="ピン" class="pin animate-pin" id="pin" 
@@ -23,7 +23,12 @@
         </div>
         <div class="row" style="padding-top: 20px">
             <div class="col-md-12">
-                <input type="submit" class="btn btn-block btn-success" value="{{$partner->name}}に思いを伝える！">
+                @auth
+                    <input type="submit" class="btn btn-block btn-success" value="{{$partner->name}}に思いを伝える！">
+                @else
+                <button class="btn btn-block btn-success" disabled="">思いを伝える！</button>
+                    <p>デモなので押しても動きません</p>
+                @endauth
                 <input type="hidden" name="physicalCondition" value="" id="physicalCondition">
                 <input type="hidden" name="mentalCondition"    value="" id="mentalCondition">
             </div>        

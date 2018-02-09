@@ -80,8 +80,8 @@
                             </div>
                         </div>
                         <div class="panel text-center">
-                            <a href="{{Route('yomerter')}}">
-                                <p>デモページ</p>
+                            <a href="{{Route('demo-yomerter')}}">
+                                <h4>デモページを見てみる！</h4>
                                 <img class="img-responsive" src="img/yometer_face.png" alt="ヨメーター" style="width: 70%;height: 70%">
                             </a>
                         </div>
