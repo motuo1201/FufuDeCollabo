@@ -19,7 +19,7 @@
                     </div>
                     <div class="row" style="text-align: center;padding-bottom: 15px">
                         <button class="btn btn-lg btn-default">
-                            <a href="{{ route('choice-position') }}"><h4>さぁ、始めてみましょう</h4></a>
+                            <a href="{{ route('terms-of-use') }}"><h4>さぁ、始めてみましょう</h4></a>
                         </button>
                         <h6 class="text-danger" style="padding-top: 5px">既に登録済みの方は<a href="{{route('login')}}">こちら</a>から！</h6>
                     </div>
