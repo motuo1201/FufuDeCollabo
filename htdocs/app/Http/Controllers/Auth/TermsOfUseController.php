@@ -8,6 +8,6 @@ use App\Http\Controllers\Controller;
 class TermsOfUseController extends Controller
 {
     public function index(){
-        return view('Auth.TermsOfUse');
+        return view('auth.TermsOfUse');
     }
 }
