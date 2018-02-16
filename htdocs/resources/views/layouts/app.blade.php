@@ -20,9 +20,18 @@
     <div id="app">
         @guest
         {{-- user情報が無いので、トップページには特に何も表示しない。 --}}
-        <div class="bg-warning" style="text-align: right">
-            既に登録済みの方は、<a href="{{route('login')}}">こちら</a>
-        </div>
+        <nav class="navbar navbar-default">
+            <div class="bs-component">
+                <nav class="navbar navbar-dark bg-danger">
+                    <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarResponsive2" 
+                            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
+                    <div class="container collapse navbar-toggleable-md" id="navbarResponsive2">
+                        <a class="navbar-brand" href="{{route('welcome')}}">トップページ</a>
+                        <a class="navbar-brand" href="{{route('login')}}">ログイン画面へ</a>
+                    </div>
+                </nav>
+            </div>
+        </nav>
         @else
         <nav class="navbar navbar-default">
             <div class="bs-component">
