@@ -125,6 +125,14 @@
                     <div class="panel text-center">
                         <img class="img-responsive" src="img/chat.jpg" alt="本音">
                     </div>
+                    <div class="row text-center">
+                        <div class="col-xs-5 col-xs-offset-2">
+                            <input type="text" id="talk_to_watson" class="form-control" placeholder="話しかける内容">
+                        </div>
+                        <div class="col-xs-4">
+                            <button id="call_watson" class="btn btn-default">話しかける</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="row" style="text-align: center">
                     <h4>↓↓登録はこちらから↓↓</h4>
@@ -170,6 +178,54 @@
             ]
         };
         var scrollMenu = ScrollMenu(setupOption);
+        
+        /* TODO:この部分はテスト用に作っているので、別ファイルに切り出すなどの対応を考える。*/ 
+        /* エラー文字列の生成 */
+        function errorHandler(args) {
+            var error;
+            // errorThrownはHTTP通信に成功したときだけ空文字列以外の値が定義される
+            if (args[2]) {
+                try {
+                    // JSONとしてパースが成功し、且つ {"error":"..."} という構造であったとき
+                    // (undefinedが代入されるのを防ぐためにtoStringメソッドを使用)
+                    error = $.parseJSON(args[0].responseText).error.toString();
+                } catch (e) {
+                    // パースに失敗した、もしくは期待する構造でなかったとき
+                    // (PHP側にエラーがあったときにもデバッグしやすいようにレスポンスをテキストとして返す)
+                    error = 'parsererror(' + args[2] + '): ' + args[0].responseText;
+                }
+            } else {
+                // 通信に失敗したとき
+                error = args[1] + '(HTTP request failed)';
+            }
+            return error;
+        }
+
+        // DOMを全て読み込んだあとに実行される
+        $(function () {
+            // 「#execute」をクリックしたとき
+            $('#call_watson').click(function () {
+                // Ajax通信を開始する
+                $.ajax({
+                    url: '{{route('conversation_call')}}',
+                    type: 'post', // getかpostを指定(デフォルトは前者)
+                    dataType: 'json', // 「json」を指定するとresponseがJSONとしてパースされたオブジェクトになる
+                    data : {spokenword : $('#talk_to_watson').val(), context : '' },
+                })
+                // ・ステータスコードは正常で、dataTypeで定義したようにパース出来たとき
+                .done(function (response) {
+                    alert(response.output.text);
+                })
+                // ・サーバからステータスコード400以上が返ってきたとき
+                // ・ステータスコードは正常だが、dataTypeで定義したようにパース出来なかったとき
+                // ・通信に失敗したとき
+                .fail(function () {
+                    // jqXHR, textStatus, errorThrown と書くのは長いので、argumentsでまとめて渡す
+                    // (PHPのfunc_get_args関数の返り値のようなもの)
+                    alert(errorHandler(arguments));
+                });
+            });
+        });
     </script>
     </body>
 </html>
