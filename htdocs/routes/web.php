@@ -17,10 +17,13 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::group(['middleware' => ['guest']], function (){
-    Route::get('/demo-yomerter'   , 'Yomerter\DemoYomerterController@index')->name('demo-yomerter');
-    Route::get('/termsofuse'      , 'Auth\TermsOfUseController@index')->name('terms-of-use');
-    Route::get('/choice-position' , 'Auth\ChoicePositionController@index')->name('choice-position');
-    Route::post('/choice-position', 'Auth\ChoicePositionController@goNext')->name('choice-position');
+    Route::get('/demo-yomerter'    , 'Yomerter\DemoYomerterController@index')->name('demo-yomerter');
+    Route::get('/termsofuse'       , 'Auth\TermsOfUseController@index')->name('terms-of-use');
+    Route::get('/choice-position'  , 'Auth\ChoicePositionController@index')->name('choice-position');
+    Route::post('/choice-position' , 'Auth\ChoicePositionController@goNext')->name('choice-position');
+    Route::post('/set-first-user', 'Auth\RegisterController@setFistUser')->name('setFirstUser');
+    Route::get('/register-partner' , 'Auth\RegisterController@showRegisterPartner')->name('register-partner');
+    Route::post('/register-partner', 'Auth\RegisterController@inputPartner')->name('register-partner');
 });
 
 Route::group(['middleware' => ['auth']], function (){

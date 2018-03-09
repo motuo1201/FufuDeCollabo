@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Session;
 
 class RegisterController extends Controller
 {
@@ -43,10 +44,31 @@ class RegisterController extends Controller
     public function showRegistrationForm(Request $request)
     {
         //直接遷移は禁止。必ず夫か妻かを選んでもらう
-        if(old('position') === null and URL::previous()!==route('choice-position')){
+        if(session('position') === null){
             return redirect(route('choice-position'));
         }
         return view('auth.register');
+    }
+    public function setFistUser(Request $request){
+        $this->validate($request, [
+            'name'              => 'required|string|max:255',
+            'email'             => 'required|string|email|max:255|unique:users',
+            'password'          => 'required|string|min:6|confirmed',
+            'position'          => 'required|in:夫,妻'
+        ]);
+        Session::put('name',$request->name);
+        Session::put('email',$request->email);
+        Session::put('password',$request->password);
+        Session::put('first-position',$request->position);
+        return redirect(route('register-partner'));
+    }
+
+    /**
+     * パートナー登録画面へ遷移する。
+     * @param Request $request
+     */  
+    public function showRegisterPartner(Request $request){
+        return view('auth.registerPartner');
     }
 
     /**
@@ -57,17 +79,10 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        //TODO:バリデーションが不十分
-        //パートナーのemailユニークチェック
-        //登録者とパートナーが同じemailアドレスだった場合のvalidation
         return Validator::make($data, [
             'name'              => 'required|string|max:255',
             'email'             => 'required|string|email|max:255|unique:users',
             'password'          => 'required|string|min:6|confirmed',
-            'partners-name'     => 'required|string|max:255',
-            'partners-email'    => 'required|string|email|max:255',
-            'partners-password' => 'required|string|min:6|confirmed',
-            'position'          => 'required|in:夫,妻'
         ]);
     }
 
@@ -80,21 +95,23 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $fufuId = md5(uniqid(rand(),1));
+        $test = Session::all();
+        $test2 = session('name');
         //パートナーの情報を登録する
         User::create([
-            'name' => $data['partners-name'],
-            'email' => $data['partners-email'],
-            'password' => bcrypt($data['partners-password']),
-            'fufuId' => $fufuId,
-            'position' => ($data['position'])==="妻"?"夫":"妻",
-        ]);
-        //メインユーザーの登録を行う。
-        return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'fufuId' => $fufuId,
-            'position' => $data['position']
+            'position' => (session('first-position')==='夫')?'妻':'夫'
+        ]);
+        //メインユーザーの登録を行う。
+        return User::create([
+            'name' => session('name'),
+            'email' => session('email'),
+            'password' => bcrypt(session('password')),
+            'fufuId' => $fufuId,
+            'position' => session('first-position')
         ]);
     }
 }

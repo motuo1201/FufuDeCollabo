@@ -13,8 +13,6 @@
     <!-- Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css">
 </head>
 <body>
     <div id="app">
@@ -22,7 +20,7 @@
         {{-- user情報が無いので、トップページには特に何も表示しない。 --}}
         <nav class="navbar navbar-default">
             <div class="bs-component">
-                <nav class="navbar navbar-dark bg-danger">
+                <nav class="navbar navbar-dark bg-warning">
                     <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarResponsive2" 
                             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
                     <div class="container collapse navbar-toggleable-md" id="navbarResponsive2">
@@ -35,7 +33,7 @@
         @else
         <nav class="navbar navbar-default">
             <div class="bs-component">
-                <nav class="navbar navbar-dark bg-danger">
+                <nav class="navbar navbar-dark bg-warning">
                     <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarResponsive2" 
                             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
                     <div class="container collapse navbar-toggleable-md" id="navbarResponsive2">
@@ -76,6 +74,15 @@
             </div>
         </nav>
         @endguest
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         @yield('content')
     </div>
 
@@ -83,8 +90,6 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>        
     <script src="js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.min.js"></script>
-
     @yield('script')
 </body>
 </html>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class ChoicePositionController extends Controller
 {
@@ -21,6 +22,7 @@ class ChoicePositionController extends Controller
      */
     public function goNext(Request $request){
         $this->validate($request, ['position'=>'required|in:夫,妻']);
+        Session::push('position', $request->position);
         return redirect(route('register'))->with('position', $request->position);
     }
 }

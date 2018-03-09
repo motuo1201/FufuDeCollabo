@@ -1,139 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-
-<form class="form-horizontal" method="POST" action="{{ route('register') }}">
-    {{ csrf_field() }}
-    <div class="row">
-        <div class="col-xs-12 col-md-6 bg-danger" style="color: white;height:100vh">
-            <h2>{{session('position')}}の登録ページ</h2>
-            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                <label for="name" class="col-md-4 control-label">お名前</label>
-
-                <div class="col-md-6">
-                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-
-                    @if ($errors->has('name'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('name') }}</strong>
-                        </span>
-                    @endif
-                </div>
-            </div>
-
-            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                <div class="col-md-6">
-                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                    @if ($errors->has('email'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('email') }}</strong>
-                        </span>
-                    @endif
-                </div>
-            </div>
-
-            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                <label for="password" class="col-md-4 control-label">Password</label>
-
-                <div class="col-md-6">
-                    <input id="password" type="password" class="form-control" name="password" required>
-
-                    @if ($errors->has('password'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('password') }}</strong>
-                        </span>
-                    @endif
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="password-confirm" class="col-md-4 control-label">Password(確認用)</label>
-
-                <div class="col-md-6">
-                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                </div>
-            </div>
-            <input type="hidden" value="{{session('position')}}" name="position">
-            <div class="col-xs-12 text-center">
-                <a href="#partner"><img src="./img/arrowDown.png" alt="次へ" class="bound"></a>
-            </div>
+<div class="container" style="height: 100vh">
+    <form class="form-horizontal text-warning" method="post" action="{{ route('setFirstUser') }}">
+        {{ csrf_field() }}
+        @component('auth.registerComponent')
+            {{session('position')}}の登録ページ
+        @endcomponent
+        <div class="form-group">
+            <input type="hidden" name="position" value="{{session('position')}}">
+            <input type="submit" class="btn btn-warning btn-block" style="height: 60px;bottom: 0;"
+                   value="{{(session('position')==='夫')?'妻':'夫'}}の登録へ進む">
         </div>
-        <div class="col-xs-12 col-md-6 bg-primary" style="color:white;height:100vh" id="partner">
-            <h2>{{session('position')==='妻'?'夫':'妻'}}の登録ページ</h2>
-            <div class="form-group{{ $errors->has('partners-name') ? ' has-error' : '' }}">
-                <label for="name" class="col-md-4 control-label">お名前</label>
-
-                <div class="col-md-6">
-                    <input id="partners-name" type="text" class="form-control" name="partners-name" value="{{ old('partners-name') }}" required autofocus>
-
-                    @if ($errors->has('name'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('partners-name') }}</strong>
-                        </span>
-                    @endif
-                </div>
-            </div>
-
-            <div class="form-group{{ $errors->has('partners-email') ? ' has-error' : '' }}">
-                <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                <div class="col-md-6">
-                    <input id="partners-email" type="email" class="form-control" name="partners-email" value="{{ old('partners-email') }}" required>
-
-                    @if ($errors->has('email'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('partners-email') }}</strong>
-                        </span>
-                    @endif
-                </div>
-            </div>
-
-            <div class="form-group{{ $errors->has('partners-password') ? ' has-error' : '' }}">
-                <label for="password" class="col-md-4 control-label">Password</label>
-
-                <div class="col-md-6">
-                    <input id="partners-password" type="password" class="form-control" name="partners-password" required>
-
-                    @if ($errors->has('partners-password'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('partners-password') }}</strong>
-                        </span>
-                    @endif
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="password-confirm" class="col-md-4 control-label">Password(確認用)</label>
-
-                <div class="col-md-6">
-                    <input id="partners-password-confirm" type="password" class="form-control" name="partners-password_confirmation" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-warning btn-block" style="height: 60px;position: absolute;bottom:0;">
-                    会員登録    
-                </button>
-            </div>
-        </div>
-    </div>
-</form>
-
+    </form>    
+</div>
 @endsection
 
 @section('script')
-<script type="text/javascript">
-$(function(){
-	$('a[href^="#"]').click(function(){
-		var speed = 500;
-		var href= $(this).attr("href");
-		var target = $(href == "#" || href == "" ? 'html' : href);
-		var position = target.offset().top;
-		$("html, body").animate({scrollTop:position}, speed, "swing");
-		return false;
-	});
-});
-</script>
 @endsection
