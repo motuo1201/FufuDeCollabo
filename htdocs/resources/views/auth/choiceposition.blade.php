@@ -8,7 +8,7 @@
         <form action="{{route('choice-position')}}" method="POST">
             {{ csrf_field() }}
             <input type="submit" class="btn btn-primary btn-block" value="夫" style="height: 15vh" name="position">
-            <input type="submit" class="btn btn-warning btn-block" value="妻" style="height: 15vh" name="position">
+            <input type="submit" class="btn btn-danger  btn-block" value="妻" style="height: 15vh" name="position">
         </form>
     </div>
 </div>
