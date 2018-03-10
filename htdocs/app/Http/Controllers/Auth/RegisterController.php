@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Session;
 
 class RegisterController extends Controller
@@ -41,6 +40,11 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
+    /**
+     * 最初のメインユーザー登録画面を表示する。
+     * @param Request $request
+     * @return type
+     */
     public function showRegistrationForm(Request $request)
     {
         //直接遷移は禁止。必ず夫か妻かを選んでもらう
@@ -49,6 +53,11 @@ class RegisterController extends Controller
         }
         return view('auth.register');
     }
+    /**
+     * 最初に登録するメインユーザーの情報を検証し、セッションに情報を保持する。
+     * @param Request $request
+     * @return type
+     */
     public function setFistUser(Request $request){
         $this->validate($request, [
             'name'              => 'required|string|max:255',
@@ -87,7 +96,7 @@ class RegisterController extends Controller
     }
 
     /**
-     * Create a new user instance after a valid registration.
+     * 夫婦双方の情報を登録する。
      *
      * @param  array  $data
      * @return \App\User
@@ -95,8 +104,6 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $fufuId = md5(uniqid(rand(),1));
-        $test = Session::all();
-        $test2 = session('name');
         //パートナーの情報を登録する
         User::create([
             'name' => $data['name'],
