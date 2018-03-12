@@ -18,7 +18,7 @@ class Yomerter extends Model
     protected $attributes = [
         'physicalCondition' => 50,
         'mentalCondition'   => 50,
-        'comment'           => ''
+        'comment'           => null
     ];
 
     /**

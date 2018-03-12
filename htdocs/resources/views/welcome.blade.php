@@ -19,8 +19,9 @@
                     </div>
                     <div class="row" style="text-align: center;padding-bottom: 15px">
                         <button class="btn btn-lg btn-default">
-                            <a href="{{ route('register') }}"><h4>さぁ、始めてみましょう</h4></a>
-                        </button>             
+                            <a href="{{ route('terms-of-use') }}"><h4>さぁ、始めてみましょう</h4></a>
+                        </button>
+                        <h6 class="text-danger" style="padding-top: 5px">既に登録済みの方は<a href="{{route('login')}}">こちら</a>から！</h6>
                     </div>
                     <div class="row" style="text-align: center">
                         <div class="col-xs-1 col-sm-1 col-md-1">
@@ -79,8 +80,8 @@
                             </div>
                         </div>
                         <div class="panel text-center">
-                            <a href="{{Route('yomerter')}}">
-                                <p>デモページ</p>
+                            <a href="{{Route('demo-yomerter')}}">
+                                <h4>デモページを見てみる！</h4>
                                 <img class="img-responsive" src="img/yometer_face.png" alt="ヨメーター" style="width: 70%;height: 70%">
                             </a>
                         </div>
@@ -124,6 +125,14 @@
                     <div class="panel text-center">
                         <img class="img-responsive" src="img/chat.jpg" alt="本音">
                     </div>
+                    <div class="row text-center">
+                        <div class="col-xs-5 col-xs-offset-2">
+                            <input type="text" id="talk_to_watson" class="form-control" placeholder="話しかける内容">
+                        </div>
+                        <div class="col-xs-4">
+                            <button id="call_watson" class="btn btn-default">話しかける</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="row" style="text-align: center">
                     <h4>↓↓登録はこちらから↓↓</h4>
@@ -137,8 +146,9 @@
         <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>        
         <script src="js/bootstrap.min.js"></script>
         <script src="js/scrollmenu.min.js"></script>
-         <script>
-                   //base setup
+        <script src="js/callWatsonAPI.js"></script>
+        <script>
+        //base setup
         var setupOption = {
             className : 'creative-menu',
             anchorSetup: [
@@ -165,10 +175,20 @@
                     label: "伝えるサービス",
                     className : 'animate-text',
                     template: '<div class="menu-wrap"><div class="menu"><div class="text-wrap"><%= label %></div></div></div>'
-                }, 
+                }
             ]
         };
         var scrollMenu = ScrollMenu(setupOption);
+        
+        $('#call_watson').click(function(){
+            //WatsonConversationを呼び出し、レスポンスをalertで出力する。(デモ用機能)
+            watsonConversation('{{route('conversation_call')}}',$('#talk_to_watson').val(),"")
+                .done(function(response){
+                    alert(response.output.text);
+                }).fail(function(){
+                    alert(errorHandler(arguments));
+                });
+        });
     </script>
     </body>
 </html>

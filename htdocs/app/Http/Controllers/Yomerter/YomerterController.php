@@ -31,7 +31,7 @@ class YomerterController extends Controller
         $partner = $this->userRepository->getPartner();
         $partnersCondition = $this->yomerter->getLatestPartnersCondition($partner->id);
         
-        return view('yomerter.yomerter', compact('latestCondition','partnersCondition'));
+        return view('yomerter.yomerter', compact('latestCondition','partnersCondition','partner'));
     }
     /**
      * 現在のヨメーターの状態を登録する。
@@ -42,7 +42,7 @@ class YomerterController extends Controller
         $this->validate($request, 
                 ['physicalCondition' => 'integer|between:0,100',
                  'mentalCondition'   => 'integer|between:0,100',
-                 'comment'           => 'required']);
+                 'comment'           => 'max:255']);
         $user = \Auth::user();
         $param = $request->only(['physicalCondition','mentalCondition','comment']);
         $param['user_id'] = $user->id;
