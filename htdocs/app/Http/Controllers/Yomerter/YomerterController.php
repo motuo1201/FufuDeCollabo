@@ -49,7 +49,7 @@ class YomerterController extends Controller
         $this->yomerter->saveCondition($param);
         
         $partner = $this->userRepository->getPartner();
-        Mail::to($partner->email)->send(new YomerterUpdated($param));
+        Mail::to($partner->email)->send(new YomerterUpdated($param,$user->email,$user->name,$partner));
         
         return redirect(route('yomerter'));
     }    

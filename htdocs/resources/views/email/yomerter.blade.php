@@ -1,4 +1,3 @@
-<p>メール！</p>
-<p>今の体調{{$sendParam['physicalCondition']}}%</p>
-<p>今の気分{{100 - $sendParam['mentalCondition']}}%</p>
-<p>一言{{$sendParam['comment']}}</p>
+<p>今の体調は、100点満点中{{$sendParam['physicalCondition']}}点です。</p>
+<p>今の気分は、100点満点中{{100 - $sendParam['mentalCondition']}}点です。</p>
+<p>伝えたい一言：{{$sendParam['comment']}}</p>
