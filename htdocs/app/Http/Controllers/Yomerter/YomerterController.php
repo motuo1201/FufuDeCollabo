@@ -6,24 +6,29 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Yometer\IYomerter;
 use App\Repositories\User\IUser;
+use \Illuminate\Support\Facades\Mail;
+use App\Mail\YomerterUpdated;
 
 class YomerterController extends Controller
 {
     private $yomerter;
-    
-    public function __construct(IYomerter $yomerter) {
+    private $userRepository;
+
+
+    public function __construct(IYomerter $yomerter, IUser $userRepository) {
         $this->yomerter = $yomerter;
+        $this->userRepository = $userRepository;
     }
 
     /**
      * ヨメーターの初期画面
      * @return type
      */
-    public function index(IUser $userRepository){
+    public function index(){
         $user = \Auth::user();
         $latestCondition = $this->yomerter->getLatestCondition($user->id);
         
-        $partner = $userRepository->getPartner();
+        $partner = $this->userRepository->getPartner();
         $partnersCondition = $this->yomerter->getLatestPartnersCondition($partner->id);
         
         return view('yomerter.yomerter', compact('latestCondition','partnersCondition','partner'));
@@ -42,6 +47,10 @@ class YomerterController extends Controller
         $param = $request->only(['physicalCondition','mentalCondition','comment']);
         $param['user_id'] = $user->id;
         $this->yomerter->saveCondition($param);
+        
+        $partner = $this->userRepository->getPartner();
+        Mail::to($partner->email)->send(new YomerterUpdated($param,$user->email,$user->name,$partner));
+        
         return redirect(route('yomerter'));
     }    
 }
