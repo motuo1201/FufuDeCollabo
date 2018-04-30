@@ -10,12 +10,13 @@
     </head>
     <body>
         <div id="wrapper">
+            <div class="toptitle">夫婦でコラボ</div>
             <div class="jumbotron topimage"></div>
             <div class="container">
                 <section class="section" id="section1">
                     <div class="row" style="text-align: center">
                         <h5 class="text-mute">伝わらないその想い…</h5>
-                        <h5>夫婦でちゃんとシェアしませんか？hoge</h5>
+                        <h5>夫婦でちゃんとシェアしませんか？</h5>
                     </div>
                     <div class="row" style="text-align: center;padding-bottom: 15px">
                         <button class="btn btn-lg btn-default">

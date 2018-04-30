@@ -19,6 +19,44 @@ body{
     height: 100%;
 }
 
+/*ナビゲーションバー*/
+.navbar-header{
+    padding: 0px;/*スッキリパディングなし*/
+}
+
+.nav_container{
+    width:100%; 
+    background-color:#eeeeee;
+}
+
+.hidari{
+    text-align:left;
+    float:left;
+    width: 50px;
+    height:40px;
+    display: flex;
+    align-items: center;
+}
+.chuou{
+    text-align:center;
+    height:40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.menu_migiyose{
+    text-align:right;
+    float: right;
+    border: none;
+}
+
+/*ページトップタイトル*/
+.toptitle{
+    height:100px;
+    background-color: white;
+    text-align: left;
+}
+
 /*トップ画像のイメージ*/
 .jumbotron.topimage{
     background:url(../img/fufu.jpg)center no-repeat;
