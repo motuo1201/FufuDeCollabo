@@ -38,7 +38,9 @@
                             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
                     <div class="container collapse navbar-toggleable-md" id="navbarResponsive2">
                         <a class="navbar-brand" href="{{route('home')}}">トップページ</a>
+
                         <ul class="nav navbar-nav">
+                            <a class="nav-link" href="{{url()->previous()}}">戻る</a>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">リンク</a>
                             </li>
