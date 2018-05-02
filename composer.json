@@ -9,10 +9,12 @@
         "laravel/framework": "5.5.*",
         "fideloper/proxy": "~3.3",
         "laravel/tinker": "~1.0",
-        "ext-mysqli": "*"
+        "ext-mysqli": "*",
+        "fzaninotto/faker": "~1.4",
+        "doctrine/dbal": "~2.3"
     },
     "require-dev": {
-        "fzaninotto/faker": "~1.4",
+        "barryvdh/laravel-ide-helper": "^2.4",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~5.0",
         "symfony/css-selector": "3.1.*",
@@ -20,7 +22,8 @@
     },
     "autoload": {
         "classmap": [
-            "htdocs/database"
+            "htdocs/database",
+            "htdocs/app/Repositories"
         ],
         "psr-4": {
             "App\\": "htdocs/app/"
@@ -28,7 +31,7 @@
     },
     "autoload-dev": {
         "classmap": [
-            "tests/TestCase.php"
+            "htdocs/tests/TestCase.php"
         ]
     },
     "scripts": {
@@ -45,7 +48,8 @@
             "mkdir -p /tmp/app/htdocs/storage/framework/cache",
             "Illuminate\\Foundation\\ComposerScripts::postInstall",
             "php htdocs/artisan optimize",
-            "php htdocs/artisan key:generate"
+            "php htdocs/artisan key:generate",
+            "php htdocs/artisan migrate"
         ],
         "post-update-cmd": [
             "mkdir -p /tmp/app/htdocs/bootstrap/cache",
@@ -54,7 +58,9 @@
             "mkdir -p /tmp/app/htdocs/storage/framework/cache",
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "php htdocs/artisan optimize",
-            "php htdocs/artisan key:generate"
+            "cp /tmp/app/htdocs/.env.example /tmp/app/htdocs/.env",
+            "php htdocs/artisan key:generate",
+            "php htdocs/artisan migrate"
         ]
     },
     "config": {
