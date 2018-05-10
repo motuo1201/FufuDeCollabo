@@ -36,7 +36,7 @@ class YomerterUpdated extends Mailable
      */
     public function build()
     {
-        return $this->subject($this->partner->name.'のヨメーターが更新されました')->from($this->fromAddress,$this->name)
+        return $this->subject($this->name.'のヨメーターが更新されました')->from($this->fromAddress,$this->name)
                 ->view('email.yomerter')->with('sendParam', $this->param);
     }
 }
