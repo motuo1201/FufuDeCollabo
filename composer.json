@@ -57,7 +57,6 @@
             "mkdir -p /tmp/app/htdocs/storage/framework/cache",
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "php htdocs/artisan optimize",
-            "cp /tmp/app/htdocs/.env.example /tmp/app/htdocs/.env",
             "php htdocs/artisan key:generate"
         ]
     },
