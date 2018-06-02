@@ -1,13 +1,12 @@
 @extends('layouts.app')
+@section('page_name', 'ログイン')
 
 @section('content')
 <div class="container">
     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
         {{ csrf_field() }}
 	<div class="row login_box">
-	    <div class="col-md-12 col-xs-12" align="center">
-                <div class="line"><h3 style="color: #EDEFF2">ログイン</h3></div>
-                <div class="outter"><img src="./img/hakusai.png" class="image-circle"/></div>   
+	    <div class="col-md-12 col-xs-12" align="center"> 
 	    </div>
             <div class="col-md-12 col-xs-12 login_control">
                     <div class="control">

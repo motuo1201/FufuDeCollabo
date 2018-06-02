@@ -21,10 +21,10 @@
         <nav class="navbar navbar-header">
             <div class="bs-component">
                 <nav class="navbar navbar-dark bg-warning nav_container">
-                    <div class="hidari"><a><</a></div>
+                    <div class="hidari"><a class="nav-link" href="{{url()->previous()}}">&lt;</a></div>
                     <button class="navbar-toggler hiddn-lg-up menu_migiyose" type="button" data-toggle="collapse" data-target="#navbarResponsive2" 
                             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
-                    <div class="chuou">選択メニュー名</div>
+                    <div class="chuou">@yield('page_name')</div>
                     <div class="container collapse navbar-toggleable-md" id="navbarResponsive2">
                         <a class="navbar-brand" href="{{route('welcome')}}">トップページ</a>
                         <a class="navbar-brand" href="{{route('login')}}">ログイン画面へ</a>
