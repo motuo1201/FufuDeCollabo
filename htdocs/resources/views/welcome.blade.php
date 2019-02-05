@@ -10,14 +10,33 @@
     </head>
     <body>
         <div id="wrapper">
+            <div class="toptitle">
+                <div class="titlelogo"></div>
+                <div class="loginicon"></div>
+            </div>
             <div class="jumbotron topimage"></div>
             <div class="container">
                 <section class="section" id="section1">
-                    <div class="row" style="text-align: center">
-                        <h5 class="text-mute">伝わらないその想い…</h5>
-                        <h5>夫婦でちゃんとシェアしませんか？</h5>
+                    <div class="row rowwhite" style="text-align: center">
+                        <h5 class="text-mute graytxt">伝わらないその想い…</h5>
+                        <h5 class="graytxt">夫婦でちゃんとシェアしませんか？</h5>
                     </div>
-                    <div class="row" style="text-align: center;padding-bottom: 15px">
+                    <div class="row roworange" style="padding-bottom: 15px">
+                        <h6 class="midashi graytxt">サービスメニューのご紹介</h6>
+                        <button class="btn menubtn_yome">ヨメーターオンライン</button>
+                        <button class="btn menubtn_todo">夫婦deタスクシェア</button>
+                        <button class="btn menubtn_msg">伝えるサービス</button>
+                    </div>
+                    <div class="row rowwhite" style="padding-bottom: 15px">
+                        <h6 class="midashi graytxt">新規会員登録</h6>
+                        <p>まだ、夫婦deコラボのアカウントをお持ちでない方は、会員登録を行ってください。</p>
+                        <button type="button" class="btn subbtn"><a href="{{ route('terms-of-use') }}" class="a_white">新規登録をする</a></button>
+                    </div>
+                </section>
+                
+            <!--
+                <section class="section" id="section1">    
+                    <div class="row roworange" style="padding-bottom: 15px">
                         <button class="btn btn-lg btn-default">
                             <a href="{{ route('terms-of-use') }}"><h4>さぁ、始めてみましょう</h4></a>
                         </button>
@@ -139,7 +158,8 @@
                     <button class="btn btn-block btn-primary"><a href="{{ route('register') }}"><h4>使ってみる！</h4></a></button>
                 </div>
 
-                </section>        
+                </section>
+            -->   
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -147,6 +167,7 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/scrollmenu.min.js"></script>
         <script src="js/callWatsonAPI.js"></script>
+        <script type="text/javascript" src="js/retina.js"></script>
         <script>
         //base setup
         var setupOption = {
@@ -189,6 +210,6 @@
                     alert(errorHandler(arguments));
                 });
         });
-    </script>
+        </script>
     </body>
 </html>

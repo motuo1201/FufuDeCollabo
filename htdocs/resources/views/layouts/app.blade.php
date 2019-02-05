@@ -18,11 +18,13 @@
     <div id="app">
         @guest
         {{-- user情報が無いので、トップページには特に何も表示しない。 --}}
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-header">
             <div class="bs-component">
-                <nav class="navbar navbar-dark bg-warning">
-                    <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarResponsive2" 
+                <nav class="navbar navbar-dark bg-warning nav_container">
+                    <div class="hidari"><a class="nav-link" href="{{url()->previous()}}">&lt;</a></div>
+                    <button class="navbar-toggler hiddn-lg-up menu_migiyose" type="button" data-toggle="collapse" data-target="#navbarResponsive2" 
                             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
+                    <div class="chuou">@yield('page_name')</div>
                     <div class="container collapse navbar-toggleable-md" id="navbarResponsive2">
                         <a class="navbar-brand" href="{{route('welcome')}}">トップページ</a>
                         <a class="navbar-brand" href="{{route('login')}}">ログイン画面へ</a>

@@ -19,11 +19,177 @@ body{
     height: 100%;
 }
 
+/*ナビゲーションバー*/
+.navbar-header{
+    padding: 0px;/*スッキリパディングなし*/
+}
+
+.nav_container{
+    width:100%; 
+    background-color:#eeeeee;
+}
+
+/*ナビゲーションバー 戻るボタン配置用*/
+.hidari{
+    text-align:left;
+    float:left;
+    width: 50px;
+    height:40px;
+    display: flex;
+    align-items: center;
+}
+
+/*ナビゲーションバー ページ名表示用 */
+.chuou{
+    text-align:center;
+    height:40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*ナビゲーションバー メニュー配置用 */
+.menu_migiyose{
+    text-align:right;
+    float: right;
+    border: none;
+}
+
+/*ページトップタイトル*/
+.toptitle{
+    height:40px;
+    background-color: white;
+    text-align: left;
+}
+
+.titlelogo{
+    height:40px;
+    width:226px;
+    background: url(../img/titlelogo.png);
+    background-size: cover;
+    float: left;
+}
+
+.loginicon{
+    height:40px;
+    width:40px;
+    background:url(../img/login.png);
+    float: right;
+}
+
+.rowwhite{
+    background-color:white;
+    padding-left:15px;
+    padding-top:10px;
+    padding-right:15px
+}
+
+.graytxt{
+    color: rgb(50%,50%,50%);
+}
+
+.roworange{
+    color:rgb(255,236,216);
+    padding-left:15px;
+    padding-top:10px;
+    padding-right:15px
+}
+
+.midashi{
+    background:url(../img/midashi.png) no-repeat;
+    padding-left:15px;
+    background-position:center left;
+}
+
+.menubtn_yome{
+    box-sizing: border-box;
+    width:100%;
+    border-color:rgb(255,204,168);
+    height:80px;
+    font-size:1rem;
+    padding-left:20px;
+    border-radius:0.5rem;
+    /*ボタンに画像を左右に二つ配置*/
+    background-image:
+        url("../img/next.png"),
+        url("../img/yometaicon.png");
+    background-repeat:
+        no-repeat,
+        no-repeat,
+    repeat;
+    background-position:
+        97% center,
+        5% center;
+    background-color:white;
+    margin-bottom:10px;
+}
+
+.menubtn_todo{
+    box-sizing: border-box;
+    width:100%;
+    border-color:rgb(255,204,168);
+    height:80px;
+    font-size:1rem;
+    padding-left:20px;
+    border-radius:0.5rem;
+    /*ボタンに画像を左右に二つ配置*/
+    background-image:
+        url("../img/next.png"),
+        url("../img/todoicon.png");
+    background-repeat:
+        no-repeat,
+        no-repeat,
+    repeat;
+    background-position:
+        97% center,
+        5% center;
+    background-color:white;
+    margin-bottom:10px;
+}
+
+.menubtn_msg{
+    box-sizing: border-box;
+    width:100%;
+    border-color:rgb(255,204,168);
+    height:80px;
+    font-size:1rem;
+    padding-left:20px;
+    border-radius:0.5rem;
+    /*ボタンに画像を左右に二つ配置*/
+    background-image:
+        url("../img/next.png"),
+        url("../img/msgicon.png");
+    background-repeat:
+        no-repeat,
+        no-repeat,
+    repeat;
+    background-position:
+        97% center,
+        5% center;
+    background-color:white;
+    margin-bottom:10px;
+}
+
+.subbtn{
+    box-sizing: border-box;
+    width:100%;
+    height:50px;
+    background-color:rgb(84,178,75);
+    color:white;
+    font-size:1rem;  
+}
+
+.a_white{
+    color:white;
+}
+
 /*トップ画像のイメージ*/
 .jumbotron.topimage{
     background:url(../img/fufu.jpg)center no-repeat;
     background-size: cover;
-    height: 300px;
+    height: 165px;
+    padding:0px;
+    margin:0px;
 }
 /*トップ画面のスクロールメニュー関連のClass*/
 .scroll-anchor:hover .animate-text .text-wrap {
@@ -57,6 +223,10 @@ body{
   font-size: 18px;
   line-height: 22px;
 }
+
+/*ログイン画面*/
+
+
 /*ログイン後のメニュー関連のClass*/
 .btn-menu-item{
     height: 120px;
